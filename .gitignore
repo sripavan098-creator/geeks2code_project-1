@@ -1,3 +1,1 @@
-(index.html is a source file, so no need to ignore it)
-
-(empty)
+Nothing should be ignored since the only added file is a PowerPoint presentation file (.pptx), which is a source document that should be tracked in version control. No build artifacts, dependencies, or temporary files are present in the changes.
