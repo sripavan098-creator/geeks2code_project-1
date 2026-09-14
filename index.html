@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShramNexus | AntiGravity UI Mockup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap');
+        
+        body { font-family: 'Inter', sans-serif; background: #050505; color: #e2e8f0; overflow: hidden; }
+        .font-display { font-family: 'Space Grotesk', sans-serif; }
+        
+        /* Glassmorphism Base */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Voice Orb Animation */
+        .voice-orb {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #f97316, #ea580c);
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.4), inset 0 0 20px rgba(255,255,255,0.2);
+            position: relative;
+        }
+        .voice-ring {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            border-radius: 50%; border: 1px solid rgba(249, 115, 22, 0.5);
+        }
+
+        /* Map Pulse Dots */
+        .pulse-dot {
+            width: 8px; height: 8px; background: #22c55e; border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e; position: absolute;
+        }
+        .pulse-ring {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 8px; height: 8px; border-radius: 50%; border: 1px solid #22c55e;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col p-6 gap-6">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center glass-panel rounded-2xl p-4 px-8">
+        <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-orange-500 animate-pulse"></div>
+            <h1 class="font-display text-2xl font-bold tracking-tight text-white">Shram<span class="text-orange-500">Nexus</span></h1>
+        </div>
+        <div class="text-xs text-gray-400 font-mono tracking-widest">DPI INTEROPERABILITY LAYER v1.0</div>
+    </header>
+
+    <!-- Main Grid -->
+    <main class="flex-1 grid grid-cols-12 gap-6">
+        
+        <!-- LEFT: Worker Voice Interface (PS 2, 3, 6) -->
+        <section class="col-span-4 glass-panel rounded-3xl p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+            <div class="absolute top-6 left-6 text-xs font-mono text-gray-500">WORKER INTERFACE (VERNACULAR)</div>
+            
+            <div class="voice-orb mb-8" id="orb">
+                <div class="voice-ring w-[140px] h-[140px]" id="ring1"></div>
+                <div class="voice-ring w-[160px] h-[160px]" id="ring2"></div>
+                <div class="voice-ring w-[180px] h-[180px]" id="ring3"></div>
+            </div>
+            
+            <h2 class="font-display text-xl text-center mb-2">"Apna profile update karein"</h2>
+            <p class="text-sm text-gray-400 text-center max-w-[250px]">Listening in Hindi • Tap to speak</p>
+            
+            <div class="mt-8 flex gap-2">
+                <span class="px-3 py-1 rounded-full bg-white/5 text-xs border border-white/10">eShram</span>
+                <span class="px-3 py-1 rounded-full bg-white/5 text-xs border border-white/10">NCS</span>
+            </div>
+        </section>
+
+        <!-- RIGHT: Admin/Policy Dashboard (PS 1, 5, 9, 12) -->
+        <section class="col-span-8 glass-panel rounded-3xl p-8 relative overflow-hidden">
+            <div class="absolute top-6 left-6 text-xs font-mono text-gray-500">MINISTRY COMMAND DASHBOARD</div>
+            
+            <!-- Mock Map Background -->
+            <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#334155 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            <!-- Floating Data Cards -->
+            <div class="relative z-10 grid grid-cols-3 gap-4 mt-8">
+                <div class="glass-panel p-4 rounded-xl border-l-2 border-green-500">
+                    <div class="text-xs text-gray-400 mb-1">Compliance Score</div>
+                    <div class="font-display text-2xl font-bold text-white">94.2%</div>
+                    <div class="text-xs text-green-400 mt-1">↑ 2.1% from last month</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border-l-2 border-orange-500">
+                    <div class="text-xs text-gray-400 mb-1">Active Migrant Clusters</div>
+                    <div class="font-display text-2xl font-bold text-white">12,405</div>
+                    <div class="text-xs text-orange-400 mt-1">Real-time anonymized pings</div>
+                </div>
+                <div class="glass-panel p-4 rounded-xl border-l-2 border-blue-500">
+                    <div class="text-xs text-gray-400 mb-1">Data Integrity</div>
+                    <div class="font-display text-2xl font-bold text-white">99.8%</div>
+                    <div class="text-xs text-blue-400 mt-1">AI cross-validation active</div>
+                </div>
+            </div>
+
+            <!-- Animated Map Dots -->
+            <div class="pulse-dot" style="top: 40%; left: 30%;" id="dot1"><div class="pulse-ring"></div></div>
+            <div class="pulse-dot" style="top: 55%; left: 45%;" id="dot2"><div class="pulse-ring"></div></div>
+            <div class="pulse-dot" style="top: 35%; left: 60%;" id="dot3"><div class="pulse-ring"></div></div>
+            <div class="pulse-dot" style="top: 65%; left: 70%;" id="dot4"><div class="pulse-ring"></div></div>
+        </section>
+    </main>
+
+    <script>
+        // GSAP Animations for AntiGravity feel
+        gsap.to("#ring1", { scale: 1.5, opacity: 0, duration: 2, repeat: -1, ease: "power1.out" });
+        gsap.to("#ring2", { scale: 1.5, opacity: 0, duration: 2, repeat: -1, delay: 0.5, ease: "power1.out" });
+        gsap.to("#ring3", { scale: 1.5, opacity: 0, duration: 2, repeat: -1, delay: 1, ease: "power1.out" });
+
+        // Subtle floating animation for the orb
+        gsap.to("#orb", { y: -10, duration: 3, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+        // Map pulse animations
+        const dots = ["#dot1", "#dot2", "#dot3", "#dot4"];
+        dots.forEach((dot, i) => {
+            gsap.to(`${dot} .pulse-ring`, { 
+                scale: 4, 
+                opacity: 0, 
+                duration: 2.5, 
+                repeat: -1, 
+                delay: i * 0.6, 
+                ease: "power2.out" 
+            });
+        });
+
+        // Entrance choreography (The 3-second hook)
+        gsap.from("header", { y: -50, opacity: 0, duration: 0.8, ease: "power3.out" });
+        gsap.from("section", { y: 50, opacity: 0, duration: 1, stagger: 0.2, delay: 0.3, ease: "power3.out" });
+    </script>
+</body>
+</html>
